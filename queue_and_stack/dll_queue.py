@@ -6,13 +6,23 @@ class Queue:
   def __init__(self):
     self.size = 0
     # Why is our DLL a good choice to store our elements?
-    self.storage = 
+    self.storage = DoublyLinkedList()
 
   def enqueue(self, value):
-    pass
+    self.size += 1
+    if self.storage.head is None:
+      self.storage.add_to_head(value)
+    else:
+      self.storage.add_to_tail(value)
   
   def dequeue(self):
-    pass
+    if self.size == 0:
+      return
+    else:
+      self.size -= 1
+      head_value = self.storage.head.value
+      self.storage.remove_from_head()
+      return head_value
 
   def len(self):
-    pass
+    return self.size
